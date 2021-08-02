@@ -10,7 +10,6 @@ export default function outsideClick(element, events, callback) {
   }
   
   function handleOutsideClick(event) {
-    console.log('aqui');
     if (!element.contains(event.target)) {
       element.removeAttribute(outside);
 
