@@ -1,24 +1,21 @@
 export default function iniModal() {
-  
   const botaoAbrir = document.querySelector('[data-modal="abrir"]');
   const botaoFechar = document.querySelector('[data-modal="fechar"]');
   const containerModal = document.querySelector('[data-modal="container"]');
 
+  function toggleModal(event) {
+    event.preventDefault();
+    containerModal.classList.toggle('ativo');
+  }
+
+  function clickOutSide(event) {
+    event.preventDefault();
+    if (event.target === this) toggleModal(event);
+  }
+
   if (botaoAbrir && botaoFechar && containerModal) {
-
-    function toggleModal(event) {
-      event.preventDefault();
-      containerModal.classList.toggle("ativo");
-    }
-
-    function clickOutSide(event) {
-      event.preventDefault();
-      if (event.target === this) toggleModal(event);
-    }
-
-    botaoAbrir.addEventListener("click", toggleModal);
-    botaoFechar.addEventListener("click", toggleModal);
-    containerModal.addEventListener("click", clickOutSide);
-
+    botaoAbrir.addEventListener('click', toggleModal);
+    botaoFechar.addEventListener('click', toggleModal);
+    containerModal.addEventListener('click', clickOutSide);
   }
 }
